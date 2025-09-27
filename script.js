@@ -12,7 +12,7 @@ document.getElementById('cropForm').addEventListener('submit', async function(e)
     };
     const model = form.model.value;
     const BASE_URL = 'https://taller-uno.onrender.com';
-    let endpoint = BASE_URL + '/predictc';
+    let endpoint = BASE_URL + '/predict_rf';
     document.getElementById('result').textContent = 'Loading...';
     try {
         const response = await fetch(endpoint, {
