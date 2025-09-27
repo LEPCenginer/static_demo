@@ -11,8 +11,9 @@ document.getElementById('cropForm').addEventListener('submit', async function(e)
         rainfall: parseFloat(form.rainfall.value)
     };
     const model = form.model.value;
-    let endpoint = '/crop/predict_rf';
-    if (model === 'svm') endpoint = '/crop/predict_svm';
+    const BASE_URL = 'https://taller-uno.onrender.com';
+    let endpoint = BASE_URL + '/crop/predict_rf';
+    if (model === 'svm') endpoint = BASE_URL + '/crop/predict_svm';
     document.getElementById('result').textContent = 'Loading...';
     try {
         const response = await fetch(endpoint, {
