@@ -12,7 +12,15 @@ document.getElementById('cropForm').addEventListener('submit', async function(e)
     };
     const model = form.model.value;
     const BASE_URL = 'https://taller-uno.onrender.com';
-    let endpoint = BASE_URL + '/predict_rf';
+    let endpoint = '';
+    if (model === 'rf') {
+        endpoint = BASE_URL + '/predict_rf';
+    } else if (model === 'svm') {
+        endpoint = BASE_URL + '/predict_svm';
+    } else {
+        document.getElementById('result').textContent = 'Modelo no válido seleccionado.';
+        return;
+    }
     document.getElementById('result').textContent = 'Loading...';
     try {
         const response = await fetch(endpoint, {
